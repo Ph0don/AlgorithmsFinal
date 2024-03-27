@@ -104,6 +104,14 @@ public class Catmul : MonoBehaviour
             mc.sharedMesh = null;
             mc.sharedMesh = mesh;
         }
+
+        LineRenderer lineRenderer = gameObject.GetComponent<LineRenderer>();
+        lineRenderer.positionCount = points.Length + 1;
+        for(int i = 0; i < points.Length; ++i)
+        {
+            lineRenderer.SetPosition(i, points[i] + new Vector3(0.0f,0.1f,0.0f));
+        }
+        lineRenderer.SetPosition(points.Length, points[0] + new Vector3(0.0f, 0.1f, 0.0f));
     }
     int getIndex(int index)
     {
@@ -154,15 +162,15 @@ public class Catmul : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        if (points == null)
-            return;
-        for (int i = 0; i < points.Length;i++)
-        {
-            Gizmos.DrawSphere(points[i], 0.5f);
-        }
-        for (int i = 0; i < spc; i++)
-        {
-            Gizmos.DrawLine(sp[i].transform.position, sp[(i + 1) % spc].transform.position);
-        }
+        //if (points == null)
+        //    return;
+        //for (int i = 0; i < points.Length;i++)
+        //{
+        //    Gizmos.DrawSphere(points[i], 0.5f);
+        //}
+        //for (int i = 0; i < spc; i++)
+        //{
+        //    Gizmos.DrawLine(sp[i].transform.position, sp[(i + 1) % spc].transform.position);
+        //}
     }
 }
