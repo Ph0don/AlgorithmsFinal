@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class Boid : MonoBehaviour {
     public Flock flock;
@@ -11,6 +13,7 @@ public class Boid : MonoBehaviour {
     public int NeighborCount = 0;
     Vector3 noise = Vector3.zero;
     LayerMask ground;
+    RaycastHit hit;
 	// Use this for initialization
 	void Start () {
         speed = flock.speed;
@@ -20,9 +23,25 @@ public class Boid : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        //line.enabled = true;
         forward = gameObject.transform.forward;
         Motivate();
-	}
+        hit = gameObject.GetComponent<RaycastHit>();
+        if (Physics.Raycast(flock.transform.position, flock.transform.forward, out hit, Mathf.Infinity))
+        {
+
+        }
+        /*Vector3 dir = (target.transform.position - target.transform.position) / segmentCount;
+        for (int i = 0; i < segmentCount + 1; i++)
+        {
+            Vector3 pos = target.transform.position + dir * i + Random.onUnitSphere * chaos;
+            line.SetPosition(i, pos);
+        }
+        if (hit.collider.gameObject != null)
+        {
+            return NodeResult.SUCCESS;
+        }*/
+    }
     private void LateUpdate()
     {
         Move();
