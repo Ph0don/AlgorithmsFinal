@@ -6,6 +6,7 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Boid : MonoBehaviour {
     public Flock flock;
+    public Boom boom;
     public float speed = 0;
     public float turnspeed = 0;
     public Vector3 direction = Vector3.zero;
@@ -16,6 +17,7 @@ public class Boid : MonoBehaviour {
     RaycastHit hit;
 	// Use this for initialization
 	void Start () {
+        boom = GameObject.FindObjectOfType(typeof(Boom)) as Boom;
         speed = flock.speed;
         turnspeed = flock.turnspeed;
         ground = LayerMask.GetMask("Tracks");
@@ -32,6 +34,7 @@ public class Boid : MonoBehaviour {
             if(hit.collider != null)
             {
                 Destroy(gameObject);
+                //boom.Start();
             }
         }
         /*Vector3 dir = (target.transform.position - target.transform.position) / segmentCount;
