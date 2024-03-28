@@ -40,6 +40,10 @@ public class TrackManager : MonoBehaviour {
 
         // TODO add code here
 
+        LineRenderer midLine = splinePrefab.GetComponent<LineRenderer>();
+        
+        
+
         for (int i = 0; i < numSplines; i++) // TO DO - change code
         {
             splines[i].GenerateSpline();
