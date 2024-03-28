@@ -29,7 +29,10 @@ public class Boid : MonoBehaviour {
         hit = gameObject.GetComponent<RaycastHit>();
         if (Physics.Raycast(flock.transform.position, flock.transform.forward, out hit, Mathf.Infinity))
         {
-
+            if(hit.collider != null)
+            {
+                Destroy(gameObject);
+            }
         }
         /*Vector3 dir = (target.transform.position - target.transform.position) / segmentCount;
         for (int i = 0; i < segmentCount + 1; i++)
