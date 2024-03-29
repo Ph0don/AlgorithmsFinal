@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MoveTo : Task {
-    public string TargetName;
+    public string TargetKey;
+    public string SpeedKey;
+    public string TurnSpeedKey;
+    public string AccuracyKey;
     // Use this for initialization
     public float Speed = 5.0f;
     public float TurnSpeed =2.0f;
@@ -11,11 +14,11 @@ public class MoveTo : Task {
     public override NodeResult Execute()
     { 
         GameObject go = tree.gameObject;
-        GameObject target = (GameObject)tree.GetValue(TargetName);
+        GameObject target = (GameObject)tree.GetValue(TargetKey);
 
-        Speed = (float)tree.GetValue("Speed"); // should, like targetname, pass the variable names in.
-        TurnSpeed = (float)tree.GetValue("TurnSpeed");
-        Accuracy = (float)tree.GetValue("Accuracy");
+        Speed = (float)tree.GetValue(SpeedKey); // should, like targetname, pass the variable names in.
+        TurnSpeed = (float)tree.GetValue(TurnSpeedKey);
+        Accuracy = (float)tree.GetValue(AccuracyKey);
         if (Vector3.Distance(go.transform.position,target.transform.position) < Accuracy)
         {
             return NodeResult.SUCCESS;
