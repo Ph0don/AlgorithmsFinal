@@ -30,7 +30,7 @@ public class Flock : MonoBehaviour {
         for (int i = 0; i < numberOfBoids; i++)
         {
             Vector3 pos = transform.position + Random.insideUnitSphere * spawnRadius;
-            pos.y = 0.0f;
+            pos.y = 0.05f;
             Quaternion rot = Quaternion.Euler(0, Random.Range(0,360), 0);
             boids.Add(Instantiate(boidPrefab, pos,rot));
             boids[i].GetComponent<Boid>().flock = this;

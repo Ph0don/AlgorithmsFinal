@@ -31,9 +31,9 @@ public class PatrolAI : BehaviorTree {
         SetValue("TurnSpeed", TurnSpeed);
         SetValue("Accuracy", Accuracy);
         // set node parameters - connect them to the blackboard
-        MoveToWP.TargetName = "CurrentWaypoint";
-        turn.rotateSpeedKey = "SpinSpeed";
-        turn.rotateAmountKey = "SpinAmount";
+       // MoveToWP.TargetName = "CurrentWaypoint";
+       // turn.rotateSpeedKey = "SpinSpeed";
+       // turn.rotateAmountKey = "SpinAmount";
         PickNextWP.ArrayKey = "Waypoints";
         PickNextWP.GameObjectKey = "CurrentWaypoint";
         PickNextWP.IndexKey = "WaypointIndex";

@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
-public class Boid : MonoBehaviour {
+public class Boid : MonoBehaviour
+{
     public Flock flock;
     public Boom boom;
     public float speed = 0;
@@ -15,28 +16,27 @@ public class Boid : MonoBehaviour {
     Vector3 noise = Vector3.zero;
     LayerMask ground;
     RaycastHit hit;
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         boom = GameObject.FindObjectOfType(typeof(Boom)) as Boom;
         speed = flock.speed;
         turnspeed = flock.turnspeed;
         ground = LayerMask.GetMask("Tracks");
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
         //line.enabled = true;
         forward = gameObject.transform.forward;
         Motivate();
-        hit = gameObject.GetComponent<RaycastHit>();
-        if (Physics.Raycast(flock.transform.position, flock.transform.forward, out hit, Mathf.Infinity))
-        {
-            if(hit.collider != null)
-            {
-                Destroy(gameObject);
-                //boom.Start();
-            }
-        }
+        //if (!Physics.Raycast(transform.position, new Vector3(0, -1, 0), out hit, Mathf.Infinity))
+        //{
+        //    //Destroy once off track if nothing below boid
+        //    //GameObject.Instantiate(boom, transform.position, Quaternion.identity);
+        //    Destroy(gameObject);
+        //}
         /*Vector3 dir = (target.transform.position - target.transform.position) / segmentCount;
         for (int i = 0; i < segmentCount + 1; i++)
         {
@@ -60,7 +60,7 @@ public class Boid : MonoBehaviour {
             return false;
         }
         // distance check
-        Vector3 offset = b.gameObject.transform.position- transform.position;
+        Vector3 offset = b.gameObject.transform.position - transform.position;
         float ds = offset.sqrMagnitude;
         if (ds > flock.NeighborDistanceSquared)
         {
@@ -78,15 +78,15 @@ public class Boid : MonoBehaviour {
 
     void Move()
     {
-        Quaternion turnDirection = Quaternion.FromToRotation(Vector3.forward,direction);
-        transform.rotation = Quaternion.RotateTowards(gameObject.transform.rotation, turnDirection, Time.deltaTime* turnspeed);
+        Quaternion turnDirection = Quaternion.FromToRotation(Vector3.forward, direction);
+        transform.rotation = Quaternion.RotateTowards(gameObject.transform.rotation, turnDirection, Time.deltaTime * turnspeed);
         // then move
 
         Vector3 pos = transform.position + transform.forward * speed * Time.deltaTime;
         pos.y = 0.05f;
         transform.position = pos;
         // did I fall off the track?
-        if (!Physics.Raycast(pos,-Vector3.up,5,ground))
+        if (!Physics.Raycast(pos, -Vector3.up, 5, ground))
         {
             flock.removeBoid(gameObject);
 
