@@ -20,13 +20,15 @@ public class Flock : MonoBehaviour {
     public float AvoidMininum = 3.0f;
     public GameObject target;
     public List<GameObject> deadBoids;
-    public GameObject boom;
+    public Boom boom;
     public bool player;
+    RaycastHit hit;
     // Use this for initialization
     void Start () {
         target = gameObject;
         boids = new List<GameObject>();
         deadBoids = new List<GameObject>();
+        //boom = GameObject.FindObjectOfType(typeof(Boom)) as Boom;
         for (int i = 0; i < numberOfBoids; i++)
         {
             Vector3 pos = transform.position + Random.insideUnitSphere * spawnRadius;
@@ -49,15 +51,39 @@ public class Flock : MonoBehaviour {
         {
             foreach (GameObject g in deadBoids)
             {
+                boom = GameObject.FindObjectOfType(typeof(Boom)) as Boom;
                 boids.Remove(g);
                 // TODO - create a boom where the boid was
                 // TODO - destroy the boid
+                if (!Physics.Raycast(transform.position, new Vector3(0, -1, 0), out hit, Mathf.Infinity))
+                {
+                    //Destroy once off track if nothing below boid
+                    GameObject.Instantiate(boom, transform.position, Quaternion.identity);
+                    Destroy(gameObject);
+                }
             }
             deadBoids.Clear();
             if (boids.Count == 0)
             {
                 // TODO - destroy this swarm leader
                 // unless it's the player, and if it's the player, stop the game.
+                if (player)
+
+                {
+
+#if UNITY_EDITOR
+
+                    UnityEditor.EditorApplication.isPlaying = false;
+
+
+
+#else
+
+                    Application.Quit();
+
+#endif
+
+                }
             }
         }
 	}
