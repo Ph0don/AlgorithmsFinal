@@ -47,6 +47,25 @@ public class TrackManager : MonoBehaviour {
         // spawn the flocks on the tracks.  Track 0 is where the player begins.
         for (int i = 0; i < numSplines; i++) // TO DO CHANGE CODE 
         {
+            Vector3 direction = splines[i].points[1] - splines[i].points[0];
+
+            Quaternion rotation = Quaternion.LookRotation(direction, new Vector3(0,1,0));
+
+            GameObject spawnedObject = GameObject.Instantiate(swarmleaderPrefab[i], splines[i].points[0] + new Vector3(0.0f,0.05f,0.0f), rotation);
+
+            FollowTrack followTrack = spawnedObject.GetComponent<FollowTrack>();
+            followTrack.SetValue("TrackManager", this);
+            followTrack.SetValue("TrackIndex", i);
+            followTrack.SetValue("Waypoints", splines[i].sp);
+            followTrack.SetValue("Waypoint", splines[i].sp[0]);
+            followTrack.SetValue("Index", 0);
+            followTrack.SetValue("Direction", 1);
+
+
+            Flock flockComponent = spawnedObject.GetComponent<Flock>();
+            flockComponent.mask = maskNames[i];
+            flockComponent.player = i == 0;
+
             // TO DO - Spawn the swarm leader
             // TODO - Get the follow track script, and tell it about the track manager (so it can find more tracks), and the spline.
             // make sure to set the mask on the flock, and to say which is the player. 

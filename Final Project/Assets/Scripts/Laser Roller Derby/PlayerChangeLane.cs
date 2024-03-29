@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class PlayerChangeLane : Task
 {
+    public string TurnRequestedKey;
+    public string WaypointKey;
+    public string IndexKey;
+    public string TrackManagerKey;
+    public string TrackIndexKey;
+    public string DirectionKey;
+    public string WaypointsKey;
+
     public override NodeResult Execute()
     {
         Turning dir = (Turning)tree.GetValue("TurnRequested");
