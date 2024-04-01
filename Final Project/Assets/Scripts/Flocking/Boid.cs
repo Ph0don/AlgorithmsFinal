@@ -128,9 +128,11 @@ public class Boid : MonoBehaviour
             Cohesion = Cohesion - transform.position;
         }
         // normalize the three motivations
-
+       
 
         Vector3 SwarmDir = flock.target.transform.position - transform.position;
+        
+        
         //Alignment = Vector3.Normalize(Alignment);
         //Avoidance = Vector3.Normalize(Avoidance);
         //if (Random.Range(0, 100) < 5)
@@ -139,6 +141,12 @@ public class Boid : MonoBehaviour
         //}
         // and add and scale them
         direction = SwarmDir + Cohesion * flock.cohesionWeight + Alignment * flock.alignmentWeight + Avoidance * flock.avoidanceWeight;
+        
+        if(direction.y > 0.00f || direction.y < 0.00f) 
+        {
+            direction.y = 0.000f;
+        }
+
         // then renormalize again
         direction = Vector3.Normalize(direction);
     }

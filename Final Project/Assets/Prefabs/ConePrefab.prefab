@@ -242,6 +242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7707580171f781f469b0c4c0155552ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WaitTime: 1
   materials:
   - {fileID: 2100000, guid: 129fcf4ea1510ad4d9b58456376af681, type: 2}
   - {fileID: 2100000, guid: 70f247a65a25543449b375fe50c78603, type: 2}
@@ -249,4 +250,3 @@ MonoBehaviour:
   - {fileID: 2100000, guid: c4668cf9cc11bf64abfbed5ba8efcf94, type: 2}
   - {fileID: 2100000, guid: 009a280e427c7f248ab8b70d05f28d6f, type: 2}
   - {fileID: 2100000, guid: d1ab10360b868d4409dae7941a31afd7, type: 2}
-  Accuracy: 1.5

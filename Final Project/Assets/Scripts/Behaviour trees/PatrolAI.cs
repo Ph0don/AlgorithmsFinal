@@ -20,7 +20,7 @@ public class PatrolAI : BehaviorTree {
         // create blackboard keys and initialize them with values
         // NOTE - SHOULD BE USING CONSTANTS
         TurnSpeed = 2.0f;
-        Speed = 5.0f;
+        Speed = 10.0f;
         Accuracy = 1.5f;
         SetValue("Waypoints", waypoints);
         SetValue("CurrentWaypoint", waypoints[0]);
