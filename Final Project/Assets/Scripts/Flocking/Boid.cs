@@ -19,7 +19,6 @@ public class Boid : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        boom = GameObject.FindObjectOfType(typeof(Boom)) as Boom;
         speed = flock.speed;
         turnspeed = flock.turnspeed;
         ground = LayerMask.GetMask("Tracks");

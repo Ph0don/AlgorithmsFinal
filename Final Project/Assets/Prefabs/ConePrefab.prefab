@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 114877707196939348}
   - component: {fileID: 64960927057008056}
   - component: {fileID: 120185190919609966}
+  - component: {fileID: -3363367169214895129}
   m_Layer: 11
   m_Name: ConePrefab
   m_TagString: Untagged
@@ -99,6 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flock: {fileID: 0}
+  boom: {fileID: 0}
   speed: 0
   turnspeed: 0
   direction: {x: 0, y: 0, z: 0}
@@ -228,3 +230,23 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 0
+--- !u!114 &-3363367169214895129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1632310290617926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7707580171f781f469b0c4c0155552ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materials:
+  - {fileID: 2100000, guid: 129fcf4ea1510ad4d9b58456376af681, type: 2}
+  - {fileID: 2100000, guid: 70f247a65a25543449b375fe50c78603, type: 2}
+  - {fileID: 2100000, guid: 90ffe4950d661e740a11113aa228b9e1, type: 2}
+  - {fileID: 2100000, guid: c4668cf9cc11bf64abfbed5ba8efcf94, type: 2}
+  - {fileID: 2100000, guid: 009a280e427c7f248ab8b70d05f28d6f, type: 2}
+  - {fileID: 2100000, guid: d1ab10360b868d4409dae7941a31afd7, type: 2}
+  Accuracy: 1.5
