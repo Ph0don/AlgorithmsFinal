@@ -152,7 +152,7 @@ MonoBehaviour:
   AvoidMininum: 3
   target: {fileID: 0}
   deadBoids: []
-  boom: {fileID: 0}
+  boom: {fileID: 1260984010859786, guid: 886a4d4b2ffeba041aa24c2cd01402cc, type: 3}
   player: 0
 --- !u!1 &1779636616270194
 GameObject:

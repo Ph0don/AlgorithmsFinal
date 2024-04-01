@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 
 public class Flock : MonoBehaviour {
@@ -20,7 +21,7 @@ public class Flock : MonoBehaviour {
     public float AvoidMininum = 3.0f;
     public GameObject target;
     public List<GameObject> deadBoids;
-    public Boom boom;
+    public GameObject boom;
     public bool player;
     RaycastHit hit;
     // Use this for initialization
@@ -37,6 +38,7 @@ public class Flock : MonoBehaviour {
             boids.Add(Instantiate(boidPrefab, pos,rot));
             boids[i].GetComponent<Boid>().flock = this;
             // TODO - Configure the combat AI on the boid we just built.
+            
             // get the tree, and set any blackbaord variables it may need, such as the mask, the object hit (which will be null to start), the shooting range
         }
 	}
@@ -51,16 +53,12 @@ public class Flock : MonoBehaviour {
         {
             foreach (GameObject g in deadBoids)
             {
-                boom = GameObject.FindObjectOfType(typeof(Boom)) as Boom;
+                //boom = //GameObject.FindObjectOfType(typeof(Boom)) as Boom;
                 boids.Remove(g);
                 // TODO - create a boom where the boid was
+                GameObject.Instantiate(boom, g.transform.position, Quaternion.identity);
                 // TODO - destroy the boid
-                if (!Physics.Raycast(transform.position, new Vector3(0, -1, 0), out hit, Mathf.Infinity))
-                {
-                    //Destroy once off track if nothing below boid
-                    GameObject.Instantiate(boom, transform.position, Quaternion.identity);
-                    Destroy(gameObject);
-                }
+                GameObject.Destroy(g);
             }
             deadBoids.Clear();
             if (boids.Count == 0)
