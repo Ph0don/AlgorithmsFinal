@@ -13,24 +13,29 @@ public class DetectTarget : Task
         GameObject target = (GameObject)tree.GetValue("Target");
         LayerMask mask = 0;
 
-        foreach(string strMask in tree.gameObject.GetComponent<Flock>().mask)
+        foreach(string strMask in tree.gameObject.GetComponent<Boid>().flock.mask)
         {
-            mask |= LayerMask.NameToLayer(strMask);
+            mask |= LayerMask.GetMask(strMask);
         }
 
-        if (Physics.Raycast(tree.transform.position, tree.transform.forward,out hit, Mathf.Infinity, mask))
+        if (Physics.Raycast(tree.transform.position, tree.transform.forward,out hit, 20.0f,mask))
         {
             //hi :3
-            tree.SetValue("Target", target);
+            tree.SetValue("Target", hit.transform.gameObject);
             return NodeResult.SUCCESS;
         }
         
         tree.SetValue("Target", null);
         //bye :(
+        tree.gameObject.GetComponent<LineRenderer>().positionCount = 0;
         return NodeResult.FAILURE;
-        
 
 
-  
+
+
+    }
+    public override void Reset()
+    {
+        base.Reset();
     }
 }

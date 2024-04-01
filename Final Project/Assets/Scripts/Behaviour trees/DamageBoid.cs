@@ -27,4 +27,8 @@ public class DamageBoid : Task
         
         return NodeResult.SUCCESS;
     }
+    public override void Reset()
+    {
+        base.Reset();
+    }
 }

@@ -6,15 +6,14 @@ public class CombatAI : BehaviorTree
 {
     
     public Material[] materials;
-    public float Accuracy = 1.5f;
     // Use this for initialization
     void Start()
     {
         AddKey("Target");
         //AddKey("Damage");
         AddKey("Material");
-        
-        
+        SetValue("Material", materials);
+
         Selector selector = new Selector();
         Sequence sequence = new Sequence();
         DamageBoid damageBoid = new DamageBoid();
@@ -44,7 +43,7 @@ public class CombatAI : BehaviorTree
     // Update is called once per frame
     public override void Update()
     {
-
+        SetValue("Material", materials);
         base.Update();
     }
 }
