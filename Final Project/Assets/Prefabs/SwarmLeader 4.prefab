@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 135417798074669428}
   - component: {fileID: -6982004911344243437}
   - component: {fileID: -1341364929001885159}
+  - component: {fileID: -530253628890234403}
   m_Layer: 0
   m_Name: SwarmLeader 4
   m_TagString: Untagged
@@ -120,8 +121,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 709b7e486e878da46a22250fc79882f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 3
-  TurnSpeed: 2
+  Speed: 4
+  TurnSpeed: 90
   Accuracy: 1.5
 --- !u!114 &-1341364929001885159
 MonoBehaviour:
@@ -141,8 +142,8 @@ MonoBehaviour:
   numberOfObstacles: 10
   boids: []
   spawnRadius: 3
-  speed: 3
-  turnspeed: 100
+  speed: 6
+  turnspeed: 300
   FOV: 60
   NeighborDistanceSquared: 64
   cohesionWeight: 1
@@ -154,6 +155,19 @@ MonoBehaviour:
   deadBoids: []
   boom: {fileID: 1260984010859786, guid: 886a4d4b2ffeba041aa24c2cd01402cc, type: 3}
   player: 0
+--- !u!114 &-530253628890234403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1723075800250862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04a6e93386baac242977ed5640bd750b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WaitTime: 3
 --- !u!1 &1779636616270194
 GameObject:
   m_ObjectHideFlags: 0

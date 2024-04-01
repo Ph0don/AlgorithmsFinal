@@ -10,11 +10,11 @@ public class Flock : MonoBehaviour {
     public int numberOfObstacles = 10;
     public List<GameObject> boids;
     public float spawnRadius = 3.0f;
-    public float speed = 1.0f;
-    public float turnspeed = 30.0f;
+    public float speed = 6.0f;
+    public float turnspeed = 300.0f;
     public float FOV = 60; // degrees
     public float NeighborDistanceSquared = 64.0f; // avoid sqrt
-    public float cohesionWeight = 1.0f;
+    public float cohesionWeight = 0.8f;
     public float alignmentWeight = 0.0f;
     public float avoidanceWeight = 1.0f;
     public float noise = 0.1f;
@@ -64,6 +64,9 @@ public class Flock : MonoBehaviour {
             if (boids.Count == 0)
             {
                 // TODO - destroy this swarm leader
+
+
+
                 // unless it's the player, and if it's the player, stop the game.
                 if (player)
 
@@ -81,6 +84,10 @@ public class Flock : MonoBehaviour {
 
 #endif
 
+                }
+                else
+                {
+                    Destroy(gameObject);
                 }
             }
         }

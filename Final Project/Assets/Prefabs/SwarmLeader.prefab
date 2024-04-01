@@ -128,8 +128,8 @@ MonoBehaviour:
   numberOfObstacles: 10
   boids: []
   spawnRadius: 3
-  speed: 2.5
-  turnspeed: 90
+  speed: 6
+  turnspeed: 300
   FOV: 60
   NeighborDistanceSquared: 64
   cohesionWeight: 1
@@ -165,8 +165,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 709b7e486e878da46a22250fc79882f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 3
-  TurnSpeed: 2
+  Speed: 4
+  TurnSpeed: 90
   Accuracy: 1.5
 --- !u!1 &1679230103169222
 GameObject:

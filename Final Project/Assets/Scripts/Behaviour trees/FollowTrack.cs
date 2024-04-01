@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FollowTrack : BehaviorTree
 {
-    public float Speed = 5.0f;
+    public float Speed = 10.0f;
     public float TurnSpeed = 2.0f;
     public float Accuracy = 1.5f;
     // Use this for initialization

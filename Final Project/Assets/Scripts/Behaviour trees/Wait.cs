@@ -8,6 +8,8 @@ public class Wait : Task {
     public float elapsedTime = 0.0f;
     public override NodeResult Execute()
     {
+        
+        
         elapsedTime += Time.deltaTime;
         if (elapsedTime >= TimeToWait)
         {
