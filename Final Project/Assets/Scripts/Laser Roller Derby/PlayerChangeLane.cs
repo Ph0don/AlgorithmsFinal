@@ -40,7 +40,7 @@ public class PlayerChangeLane : Task
                         }
                         for (int j = 0; j < 16; j++)
                         {
-                            if (pos == tm.splines[s].points[j])
+                            if ((pos - tm.splines[s].points[j]).magnitude < 0.5f)
                             {
                                 // we have a winner - player requested to turn, and is at a waypoint that crosses
                                 // track s at control point J

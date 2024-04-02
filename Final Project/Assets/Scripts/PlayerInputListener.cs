@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerInputListener : MonoBehaviour
 {
@@ -20,10 +21,12 @@ public class PlayerInputListener : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.A))
         {
+            Debug.Log("LEFT");
             followBT.SetValue("TurnRequested", Turning.LEFT);
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
+            Debug.Log("RIGHT");
             followBT.SetValue("TurnRequested", Turning.RIGHT);
         }
     }

@@ -54,9 +54,11 @@ public class FollowTrack : BehaviorTree
 
         selector.children.Add(sequence);
 
+
+        sequence.children.Add(playerChangeLane);
         sequence.children.Add(move);
         sequence.children.Add(selectNextGameObject);
-        sequence.children.Add(playerChangeLane);
+        
 
         selector.tree = this;
         sequence.tree = this;

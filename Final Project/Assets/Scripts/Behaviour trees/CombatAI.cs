@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class CombatAI : BehaviorTree
 {
-   
+
+    public float cooldown = 5.0f;
+
     public Material[] materials;
     // Use this for initialization
     void Start()
@@ -19,12 +21,19 @@ public class CombatAI : BehaviorTree
         DamageBoid damageBoid = new DamageBoid();
         DetectTarget detectTarget = new DetectTarget();
         ZapTarget zapTarget = new ZapTarget();
-       
+        Cooldown wait = new Cooldown();
+
+        SetValue("Cooldown", cooldown);
+
+        wait.CooldownKey = "Cooldown";
+
 
         selector.children.Add(sequence);
         sequence.children.Add(detectTarget);
         sequence.children.Add(zapTarget);
         sequence.children.Add(damageBoid);
+        
+        sequence.children.Add(wait);
                
 
 
@@ -33,6 +42,7 @@ public class CombatAI : BehaviorTree
         detectTarget.tree = this;
         zapTarget.tree = this;
         damageBoid.tree = this;
+        wait.tree = this;
        
 
         root = selector;
